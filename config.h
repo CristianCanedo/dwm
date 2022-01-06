@@ -59,11 +59,11 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *volupcmd[]  = { "volup", NULL };
-static const char *voldncmd[]  = { "voldown", NULL };
-static const char *volmtcmd[]  = { "volmutetoggle", NULL };
-static const char *prtscrcmd[]  = { "prtscr", NULL };
-static const char *rprtscrcmd[]  = { "prtscr_region", NULL };
+static const char *volupcmd[]  = { "amixer", "-D", "pulse", "set", "Master", "5%+", "unmute", "-q", NULL };
+static const char *voldncmd[]  = { "amixer", "-D", "pulse", "set", "Master", "5%-", "unmute", "-q", NULL };
+static const char *volmtcmd[]  = { "amixer", "-D", "pulse", "set", "Master", "toggle", "-q", NULL };
+static const char *prtscrcmd[]  = { "ffcast", "-fw", "png", "~/pictures/screenshots/screenshot-%s.png", NULL };
+static const char *rprtscrcmd[]  = { "ffcast", "-s", "trim", "png", "~/pictures/screenshots/screenshot-%s.png", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
